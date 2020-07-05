@@ -1,25 +1,29 @@
 import React from 'react';
-import {Navbar} from './components/Navbar'
-import {Footer} from './components/Footer'
-import {Switch, Route} from 'react-router-dom'
+
+//IMPORT CONFIG  & DEPENDENCIES
+import {Switch, Route , withRouter} from 'react-router-dom'
+
+//IMPORT PAGES
 import Home from './pages/Home'
 import {MenuFood} from './pages/MenuFood'
 import SingleFood from './pages/SingleFood'
 import {AboutFood} from './pages/AboutFood'
+import Orders from './pages/Orders'
+import Error from './pages/Error'
 
 function App() {
   return (
     <>
-    <Navbar />
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/about"  component={AboutFood} />
-      <Route path="/menu"  component={MenuFood} />
       <Route path="/details/:id"  component={SingleFood}/>
+      <Route path="/orders"  component={Orders} />
+      <Route path="/menu"  component={MenuFood} />
+      <Route path="/about"  component={AboutFood} />
+      <Route path="/" exact component={Home} />
+      <Route path="*" component={Error} />
     </Switch>
-    <Footer />
     </>
   );
 }
 
-export default App;
+export default withRouter(App);
